@@ -1,21 +1,16 @@
-import trace
+from numpy import array
+from auto_lgr import auto_log_factory, set_flags
 
-def AutoLog(func):
-    def wrapper(*args, **kwargs):
-        tracer = trace.Trace(count=False, trace=True)
-        tracer.runfunc(func, *args, **kwargs)
+set_flags(debug=False)
 
-    return wrapper
 
-def two():
-    return 5
-
-@AutoLog
-def myFunc():
+@auto_log_factory(["numpy"])
+def main():
+    d = array([1, 2])
+    d.max()
     x = 15
-    x *= 16
     print(x)
-    two()
-    x /= 0
 
-myFunc()
+
+if __name__ == "__main__":
+    main()
