@@ -1,7 +1,7 @@
 from numpy import array
 from auto_lgr import auto_log_factory, set_flags
 
-set_flags(debug=False)
+set_flags(debug=True)
 
 
 @auto_log_factory(["numpy"])

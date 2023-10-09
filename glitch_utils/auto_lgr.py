@@ -1,7 +1,6 @@
 from trace import Trace
 from importlib import import_module
 from os.path import dirname
-from inspect import getmodule
 
 __DEBUG = True
 
@@ -26,7 +25,7 @@ class AutoLogR:
 def auto_log_factory(to_ignore_dir: list[str] = []):
     if __DEBUG:
         if to_ignore_dir:
-            modules = [getmodule(import_module(x)) for x in to_ignore_dir]
+            modules = [import_module(x) for x in to_ignore_dir]
 
             if modules:
                 return AutoLogD([dirname(x.__file__) for x in modules if x]) # type: ignore
